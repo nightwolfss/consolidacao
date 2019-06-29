@@ -1,0 +1,36 @@
+package operacoes;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+import javax.swing.JOptionPane;
+
+public class Ler {
+
+	public String resultado() {
+		String caminho = "resultados.txt";
+		String linha2 = "";
+		try {
+			FileReader arquivo = new FileReader(caminho);
+			BufferedReader ler = new BufferedReader(arquivo);
+			String linha = "";
+
+			try {
+				while (linha != null) {
+					linha = ler.readLine();
+					if (linha != null) {
+						linha2 = linha2 + linha + "\n";
+					}
+					System.out.println((linha));
+				}
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Dentro: " + e.getMessage());
+			}
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Fora: " + e.getMessage());
+		}
+		return linha2;
+
+	}
+
+}

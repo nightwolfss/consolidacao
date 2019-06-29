@@ -1,0 +1,27 @@
+package main;
+
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+import entidade.Quiz;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Quiz quiz = new Quiz();
+		String continuar = "s";
+		ImageIcon fisio3 = new ImageIcon(Quiz.class.getResource("/fisio3.jpg"));
+
+		while (continuar.equalsIgnoreCase("s")) {
+
+			quiz.IniciarQuiz();
+			continuar = JOptionPane.showInputDialog(null, "Tentar novamente?\n\nS - SIM\nN - NÃO");
+
+		}
+		
+		
+		JOptionPane.showMessageDialog(null, fisio3, "Obrigado" , -1);
+
+	}
+
+}

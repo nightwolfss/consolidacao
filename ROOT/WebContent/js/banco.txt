@@ -1,0 +1,24 @@
+mysql> desc campanhas;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(4)      | NO   | PRI | NULL    | auto_increment |
+| nome  | varchar(50) | YES  |     | NULL    |                |
+| texto | text        | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+
+create table campanhas (id int(4) primary key auto_increment, nome varchar(50), texto text);
+
+mysql> desc propaganda;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(5)      | NO   | PRI | NULL    | auto_increment |
+| nome      | varchar(50) | YES  |     | NULL    |                |
+| sobrenome | varchar(30) | NO   |     | NULL    |                |
+| email     | varchar(30) | YES  | UNI | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+
+create table propaganda (id int(5) primary key auto_increment, nome varchar(50) not null, email varchar(50) not null);
+
+QUARTZ - Para manipular eventos.

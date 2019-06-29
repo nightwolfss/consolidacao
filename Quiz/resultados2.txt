@@ -1,0 +1,4 @@
+Vitor: 40
+Lima: 60
+Perigote: 55
+Vencedor: 80

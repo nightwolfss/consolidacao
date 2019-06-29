@@ -1,0 +1,21 @@
+package main;
+
+import javax.swing.JOptionPane;
+
+import entidade.Quiz;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Quiz quiz = new Quiz();
+		String continuar = "s";
+		
+		while(continuar.equalsIgnoreCase("s")) {
+		quiz.IniciarQuiz();
+		
+		JOptionPane.showMessageDialog(null, "Tentar novamente?\n\nS - SIM\nN - NÃO");
+		}
+		
+	}
+
+}

@@ -1,0 +1,510 @@
+package entidade;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+
+public class Quiz {
+	
+	ImageIcon fisio = new ImageIcon(Quiz.class.getResource("/fisio.png"));
+	ImageIcon celso = new ImageIcon(Quiz.class.getResource("/celso2.png"));
+	ImageIcon jesus = new ImageIcon(Quiz.class.getResource("/jesus.png"));
+	ImageIcon fisio3 = new ImageIcon(Quiz.class.getResource("/fisio3.jpg"));
+	ImageIcon acertou = new ImageIcon(Quiz.class.getResource("/thumbsup.gif"));
+	
+	
+	public void apresentacaoQuiz() {
+		// Apresentação do Programa
+		JOptionPane.showMessageDialog(null, celso, "Game of Health", JOptionPane.INFORMATION_MESSAGE, fisio);
+		
+		JOptionPane.showMessageDialog(null, "  CENTRO UNIVERSITÁRIO CELSO LISBOA  \n\n      "
+											+ "Alunos:\n         Amanda Oliveira\n         "
+											+ "Marcos Fábio\n         Melissa Lima\n         "
+											+ "Rafaela Vieira\n         Raquel Peireira\n         "
+											+ "Sueli Lacerda\n\n      Docentes:\n         "
+											+ "Ludmila Almeida\n         "
+											+ "Thiago Pantaleão\n"," Informações", JOptionPane.INFORMATION_MESSAGE, fisio);
+		
+		JOptionPane.showMessageDialog(null, "*** Bem vindos ao Projeto Game of Health ***   "
+											+ "\n     Este projeto baseia-se em um QUIZ\n     "
+											+ "que tem como objetivo testar seus\n     "
+											+ "conhecimentos básicos acerca da\n     "
+											+ "OBESIDADE.", "Leia-Me", JOptionPane.INFORMATION_MESSAGE, jesus);
+
+	}
+	
+	public void IniciarQuiz() {
+		Random random = new Random();
+
+		Integer op = 0;
+		String resposta = null;
+		Integer pontos = 0;
+		Integer vez = 1;
+		String var = "x";
+		String nome = "";
+//	String continuar="s";
+		int i;
+		int repeticao = 11;
+		List<Integer> repetidos = new ArrayList<>();
+		List<String> perguntas = new ArrayList<String>();
+
+		String caminho = "resultados.txt";
+
+		// Verifica se o programa deve continuar.
+//	while(continuar.equalsIgnoreCase("s")) {
+
+		// O usuário é obrigado a informar um nome.
+		while (nome.equalsIgnoreCase("")) {
+			nome = JOptionPane.showInputDialog(null, "Qual é o seu nome?");
+			if (nome.equalsIgnoreCase("")) {
+				JOptionPane.showMessageDialog(null, "O nome é OBRIGATÓRIO!!", "Atenção!!", JOptionPane.WARNING_MESSAGE);
+			}
+		}
+
+		// O sistema pergunta quantas perguntas o serão feitas
+		// O sistema deve exigir
+		while (repeticao >= 11) {
+			repeticao = Integer.parseInt(
+					JOptionPane.showInputDialog(null, nome + ", quantas perguntas serão feitas? (Max = 10) "));
+		}
+
+		for (i = 1; i <= repeticao; i++) {
+			// O sistema gera um número aleatório que será a respectiva pergunta dentro do
+			// CASE.
+			op = random.nextInt(10);
+			// JOptionPane.showMessageDialog(null, repetidos +" | "+ op);
+
+			// O Sistema verifica se a opção já foi escolhida antes.
+			while (repetidos.contains(op)) {
+				op = random.nextInt(10);
+				// JOptionPane.showMessageDialog(null, "Repetido: " + op);
+			}
+			;
+
+			// O sistema adiciona a opção escolhida dentro de um ARRAY
+			repetidos.add(op);
+
+			// O sistema utiliza a opção que foi gerada Randômicamente na variável "op"
+			switch (op) {
+			case 0:
+				while (var.equalsIgnoreCase("x")) {
+
+					resposta = JOptionPane.showInputDialog(null, " --- Pergunta: " + i
+							+ " --- \nQuanto tempo a luz do Sol demora para chegar na Terra?\na) 10:37s \nb) 8:20s \nc) 4:53s \nd) 1:15s");
+
+					if (resposta.equalsIgnoreCase("b") && vez == 1) {
+						pontos = pontos + 20;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("b") && vez == 2) {
+						pontos = pontos + 15;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("b") && vez > 2) {
+						pontos = pontos + 10;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Resposta Incorreta!!", "Erro!!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					vez = vez + 1;
+
+				}
+
+				vez = 1;
+
+				break;
+
+			case 1:
+				while (var.equalsIgnoreCase("x")) {
+
+					resposta = JOptionPane.showInputDialog(null, " --- Pergunta: " + i
+							+ " --- \nQual é o meu nome?\na) Vitor \nb) Fernando \nc) André \nd) Bernardo");
+
+					if (resposta.equalsIgnoreCase("a") && vez == 1) {
+						pontos = pontos + 20;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("a") && vez == 2) {
+						pontos = pontos + 15;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("a") && vez > 2) {
+						pontos = pontos + 10;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Resposta Incorreta!!", "Erro!!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					vez = vez + 1;
+				}
+				vez = 1;
+				break;
+
+			case 2:
+				while (var.equalsIgnoreCase("x")) {
+
+					resposta = JOptionPane.showInputDialog(null, " --- Pergunta: " + i
+							+ " --- \nQual é o Sistema Operacional da Microsoft?\na) Linux \nb) Unix \nc) Windows \nd) Android");
+
+					if (resposta.equalsIgnoreCase("c") && vez == 1) {
+						pontos = pontos + 20;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("c") && vez == 2) {
+						pontos = pontos + 15;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("c") && vez > 2) {
+						pontos = pontos + 10;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Resposta Incorreta!!", "Erro!!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					vez = vez + 1;
+				}
+				vez = 1;
+				break;
+
+			case 3:
+				while (var.equalsIgnoreCase("x")) {
+
+					resposta = JOptionPane.showInputDialog(null, " --- Pergunta: " + i
+							+ " --- \nQuais as cores da Bandeira do Brasil?\na) Vermelho e Azul \nb) Branco, Preto e Cinza \nc) Amarelo, Verde e Rosa \nd) Verde, Amarelo e Azul");
+
+					if (resposta.equalsIgnoreCase("d") && vez == 1) {
+						pontos = pontos + 20;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("d") && vez == 2) {
+						pontos = pontos + 15;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("d") && vez > 2) {
+						pontos = pontos + 10;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Resposta Incorreta!!", "Erro!!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					vez = vez + 1;
+				}
+				vez = 1;
+				break;
+
+			case 4:
+				while (var.equalsIgnoreCase("x")) {
+
+					resposta = JOptionPane.showInputDialog(null, " --- Pergunta: " + i
+							+ " --- \nEm qual desses países se fala Francês e Inglês predominantemente?\na) Canadá \nb) Kabul \nc) England \nd) Saint Petersburg ");
+
+					if (resposta.equalsIgnoreCase("a") && vez == 1) {
+						pontos = pontos + 20;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("a") && vez == 2) {
+						pontos = pontos + 15;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("a") && vez > 2) {
+						pontos = pontos + 10;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Resposta Incorreta!!", "Erro!!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					vez = vez + 1;
+				}
+				vez = 1;
+				break;
+
+			case 5:
+				while (var.equalsIgnoreCase("x")) {
+
+					resposta = JOptionPane.showInputDialog(null, " --- Pergunta: " + i
+							+ " --- \nQuanto tempo demora para um ano ser Bisexto?\na) 10 anos \nb) 7 meses \nc) 4 anos \nd) 7 anos");
+
+					if (resposta.equalsIgnoreCase("c") && vez == 1) {
+						pontos = pontos + 20;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("c") && vez == 2) {
+						pontos = pontos + 15;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("c") && vez > 2) {
+						pontos = pontos + 10;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Resposta Incorreta!!", "Erro!!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					vez = vez + 1;
+				}
+				vez = 1;
+				break;
+
+			case 6:
+				while (var.equalsIgnoreCase("x")) {
+
+					resposta = JOptionPane.showInputDialog(null, " --- Pergunta: " + i
+							+ " --- \nQual é o segundo maior país do mundo?\na) Rússia \nb) Dinamarca \nc) Brasil \nd) Canadá");
+
+					if (resposta.equalsIgnoreCase("d") && vez == 1) {
+						pontos = pontos + 20;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("d") && vez == 2) {
+						pontos = pontos + 15;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("d") && vez > 2) {
+						pontos = pontos + 10;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Resposta Incorreta!!", "Erro!!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					vez = vez + 1;
+				}
+				vez = 1;
+				break;
+
+			case 7:
+				while (var.equalsIgnoreCase("x")) {
+
+					resposta = JOptionPane.showInputDialog(null, " --- Pergunta: " + i
+							+ " --- \nO que é 'Tokusatsu'?\na) Novela Japonesa \nb) Golpe de Judô \nc) Herói Janponês \nd) Dialeto Koreano");
+
+					if (resposta.equalsIgnoreCase("c") && vez == 1) {
+						pontos = pontos + 20;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("c") && vez == 2) {
+						pontos = pontos + 15;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("c") && vez > 2) {
+						pontos = pontos + 10;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Resposta Incorreta!!", "Erro!!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					vez = vez + 1;
+				}
+				vez = 1;
+				break;
+
+			case 8:
+				while (var.equalsIgnoreCase("x")) {
+
+					resposta = JOptionPane.showInputDialog(null, " --- Pergunta: " + i
+							+ " --- \nQuanto é 40 - 15 * 2 + 10 ?(Respeitando as regras de sinais)\na) 20 \nb) 60 \nc) -20 \nd) -60");
+
+					if (resposta.equalsIgnoreCase("a") && vez == 1) {
+						pontos = pontos + 20;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("a") && vez == 2) {
+						pontos = pontos + 15;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("a") && vez > 2) {
+						pontos = pontos + 10;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Resposta Incorreta!!", "Erro!!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					vez = vez + 1;
+				}
+				vez = 1;
+				break;
+
+			case 9:
+				while (var.equalsIgnoreCase("x")) {
+
+					resposta = JOptionPane.showInputDialog(null, " --- Pergunta: " + i
+							+ " --- \nO Céu é azul por conta de _ _ _ _ ?\na) Reflexos da Luz dos Oceanos \nb) Conjuntos de Gazes da atmosfera \nc) Cor da camada de Ozonio  \nd) Raios Ultra-Violetas");
+
+					if (resposta.equalsIgnoreCase("b") && vez == 1) {
+						pontos = pontos + 20;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("b") && vez == 2) {
+						pontos = pontos + 15;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else if (resposta.equalsIgnoreCase("b") && vez > 2) {
+						pontos = pontos + 10;
+						var = "z";
+						JOptionPane.showMessageDialog(null, "Acertou!!", "Uhuuu!!", JOptionPane.INFORMATION_MESSAGE,
+								acertou);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Resposta Incorreta!!", "Erro!!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					vez = vez + 1;
+				}
+				vez = 1;
+				break;
+
+			default:
+				var = "z";
+
+			}
+			vez = 1;
+			var = "x";
+		}
+
+		try {
+			String user = System.getenv("userprofile");
+			FileWriter arquivo = new FileWriter(caminho, true);
+			PrintWriter gravarNoArquivo = new PrintWriter(arquivo);
+			gravarNoArquivo.println(nome + ": " + pontos);
+			arquivo.close();
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+			e.printStackTrace();
+		}
+
+		JOptionPane.showMessageDialog(null, nome + ", a sua pontuação final foi de " + pontos + " pontos!!");
+
+		pontos = 0;
+		var = "x";
+		vez = 1;
+		nome = "";
+
+//		continuar = JOptionPane.showInputDialog(null, "Tentar novamente?\n\nS - SIM\nN - NÃO");
+		repeticao = 99;
+
+//	}
+
+		JOptionPane.showMessageDialog(null, "Lista de perguntas Respondidas: " + repetidos);
+//		JOptionPane.showMessageDialog(null, ler.resultado());
+//	JOptionPane.showMessageDialog(null, fisio3, "Obrigado" , -1);
+
+	}
+	
+	public String resultado() {
+		String caminho = "resultados.txt";
+		String linha2 = "";
+		ArrayList<Competidor> co = new ArrayList<Competidor>();
+		
+		try {
+			FileReader arquivo = new FileReader(caminho);
+			BufferedReader ler = new BufferedReader(arquivo);
+			String linha = "";
+			try {
+				
+				while (linha != null) {
+					linha = ler.readLine();
+					if (linha != null) {
+						linha2 = linha2 + linha + "\n";
+						Competidor comp = new Competidor();
+						comp.setNome(linha.substring(0, linha.length()-3));
+						comp.setPontos(Integer.parseInt(linha.substring(linha.length()-3).trim()));
+						co.add(comp);
+					
+				}
+					
+					
+					//JOptionPane.showMessageDialog(null, co);
+			} 
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+				
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Ainda não temos nenhum resultado!!");
+		}
+		Collections.sort(co);
+		for (Competidor c : co) {
+			System.out.println(co.get(1));
+		}
+		return linha2;
+
+	}
+	
+}

@@ -1,0 +1,12 @@
+package teste;
+
+public class Teste {
+
+	public static void main(String[] args) {
+		String texto = " anos";
+		
+		System.out.println(texto.substring(0, texto.length()-3));
+
+	}
+
+}

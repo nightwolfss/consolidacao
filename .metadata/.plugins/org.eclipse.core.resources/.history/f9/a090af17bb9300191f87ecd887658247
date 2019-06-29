@@ -1,0 +1,41 @@
+package teste;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+import entidade.Competidor;
+
+public class Teste {
+
+	public static void main(String[] args) {
+		
+		//String texto = "Vitor: 140";
+		ArrayList<Competidor> texto = new ArrayList<Competidor>();
+		
+		Competidor c1 = new Competidor("Vitor", 20);
+		Competidor c2 = new Competidor("Andre", 44);
+		Competidor c3 = new Competidor("Lincol", 35);
+		Competidor c4 = new Competidor("Dominic", 57);
+		Competidor c5 = new Competidor("Mario", 60);
+		
+		texto.add(c1);
+		texto.add(c2);
+		texto.add(c3);
+		texto.add(c4);
+		texto.add(c5);
+		
+		Collections.sort(texto);
+		
+		System.out.println(texto.get(2));
+		
+		/*
+		String nome = texto.substring(0, texto.length()-3);
+		Integer pontos = Integer.parseInt(texto.substring(texto.length()-3).trim());
+		
+		
+		System.out.println(nome);
+		System.out.println(pontos);
+		*/
+	}
+
+}

@@ -1,0 +1,41 @@
+package main;
+
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+import entidade.Quiz;
+import operacoes.Ler;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Ler ler = new Ler();
+		String continuar = "s";
+		ImageIcon fisio3 = new ImageIcon(Quiz.class.getResource("/fisio3.jpg"));
+		
+		new Quiz().apresentacaoQuiz();
+		
+		switch (Integer.parseInt(JOptionPane.showInputDialog(null, "O que deseja fazer?\n\n1 - Jogar\n2 - Resultados"))) {
+		
+		case 1:
+			while (continuar.equalsIgnoreCase("s")) {
+				new Quiz().IniciarQuiz();
+				continuar = JOptionPane.showInputDialog(null, "Tentar novamente?\n\nS - SIM\nN - NÃO");
+			}
+			break;
+		
+		case 2:
+			JOptionPane.showMessageDialog(null, ler.resultado());
+			break;
+
+			
+		default:
+			JOptionPane.showMessageDialog(null, "Opção inválida!!");
+			break;
+		}
+		
+		JOptionPane.showMessageDialog(null, ler.resultado());
+		JOptionPane.showMessageDialog(null, fisio3, "Obrigado" , -1);
+	}
+
+}

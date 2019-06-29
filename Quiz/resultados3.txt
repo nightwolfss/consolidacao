@@ -1,0 +1,26 @@
+Hadouken: 40
+Kamen Raider: 35
+Under: 0
+Nobuiko: 0
+Iko: 60
+Minata: 60
+Paulinho: 0
+Perigote: 0
+Tina: 0
+Tina: 0
+Ninja: 0
+Primo: 0
+Vermelho: 0
+Prata: 0
+Prata: 0
+Prata: 0
+Prata: 0
+Azul: 0
+Blue: 0
+Battle: 40
+Pedro: 60
+Esácio: 0
+Preto: 0
+Pedro: 0
+Vaquinha: 40
+Bolete: 100

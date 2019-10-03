@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entidade.Consolidador;
-import entidade.Enquete;
 import entidade.Login;
 
 public class PessoaDao extends Dao{
@@ -265,69 +264,5 @@ public String PesquisarNomeLogin(String a){
 		}
 		
 	}
-	
-	public Enquete contadorenquete(){
 		
-		Enquete en = new Enquete();
-		en.setDjpv(0.);
-		en.setLouva(0.);
-		en.setNaosei(0.);
-		en.setContdjpv(0.);
-		en.setContlouva(0.);
-		en.setContnaosei(0.);
-		
-		String coluna = "";
-		
-		
-		try {
-			abrirConexao();
-			stmt = con.prepareStatement("select * from enquete");
-			rs = stmt.executeQuery();
-			
-			while(rs.next()){
-				
-				coluna = rs.getString("opcao");
-				
-				if(coluna.equalsIgnoreCase("DJ PV")) {
-					en.setContdjpv(en.getContdjpv() + 1);
-					
-				}
-				
-				if(coluna.equalsIgnoreCase("Louva a Deus")) {
-					en.setContlouva(en.getContlouva() + 1);
-				}
-				
-				if (coluna.equalsIgnoreCase("Nao Sei")) {
-					en.setContnaosei(en.getContnaosei() + 1);
-				}
-				
-			}
-			
-						
-			System.out.println("DJ PV: "+ en.getContdjpv());
-			System.out.println("Louva a Deus: "+ en.getContlouva());
-			System.out.println("Indecisos: "+ en.getContnaosei());
-			System.out.println("");
-			
-			Double soma = (en.getContdjpv() + en.getContlouva() + en.getContnaosei());
-			Double porcentPV = (en.getContdjpv() * 100)/soma;
-			Double porcentlouva = (en.getContlouva() * 100) / soma;
-			Double porcentnaosei = (en.getContnaosei() * 100)/soma;
-			
-			
-			en.setDjpv(porcentPV);
-			en.setLouva(porcentlouva);
-			en.setNaosei(porcentnaosei);
-			
-						
-			stmt.close();
-			fecharConexao();
-			
-		} catch (Exception e) {
-			System.out.println("Erro: "+ e.getMessage());
-		}
-		
-		return en;
-	}
-	
 }

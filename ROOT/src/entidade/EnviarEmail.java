@@ -103,24 +103,26 @@ import persistencia.Dao;
 				stmt.execute();
 				
 				//Trocando o email de envio
-				if (i <= 1) {
-					email = "mais.vida.boaplena@gmail.com";
-					i = 2;
-				} else if (i == 2) {
-					email = "vidaboa.mais.plena@gmail.com";
-					i = 3;
-				} else {
-					email = "boa.vidaplena.mais@gmail.com";
-					i = 1;
-				}
-				
-				//props.clone();
-				System.out.println("\n----\n");
-
-			}
-			fecharConexao();
+//				if (i <= 1) {
+//					email = "vitorrubm2@gmail.com";
+//					i = 2;
+//				}else if (i == 2) {
+//					email = "vitorrubm@gmail.com";
+//					i = 3;
+//				}else if (i == 3){
+//					email = "vitorrubm2@gmail.com";
+//					i = 4;
+//				} else {
+//					email = "vitorrubm@gmail.com";
+//					i = 1;
+//				
+//				//props.clone();
+//				System.out.println("\n----\n");
+//
+//			}
+//			fecharConexao();
 			retorno = true;
-
+		}
 			System.out.println("");
 		} catch (Exception e) {
 			System.out.println("Erro ao abrir a conex�o com o BD: " + e.getMessage());
@@ -148,7 +150,8 @@ import persistencia.Dao;
                     new javax.mail.Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
 
-                            return new PasswordAuthentication("vidaboa.mais.plena@gmail.com", "bruno2013");//email e senha usuário 
+                            //return new PasswordAuthentication("vidaboa.mais.plena@gmail.com", "bruno2013");//email e senha usuário 
+                            return new PasswordAuthentication("vitorrubm@gmail.com", "Jesuseamor");//email e senha usuário
                         }
                     });
             		

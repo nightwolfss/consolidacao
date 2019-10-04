@@ -38,8 +38,8 @@ if(session.getAttribute("nome").equals("Vitor")){
 <br/>
 
 <form action="Controle?cmd=campanhaGravar" method="post">
-
-	<table class="table">
+<div class="container">
+	<table class="table table-borderless table-dark">
 		<tr>
 			<td valign="top"><input type="text" name="nome" placeholder="Nome campanha" class="form-control"></td>
 			<td><textarea name="texto" rows="5" cols="90" placeholder="Escreva o conteúdo do email." class="form-control"></textarea> </td>
@@ -47,10 +47,11 @@ if(session.getAttribute("nome").equals("Vitor")){
 			
 		</tr>
 	</table>
+</div>
 </form>
-
+<div class="container">
 <form action="Controle?cmd=campanhaUpdate">
-	<table class="table table-bordered">
+	<table class="table table-dark table-bordered">
 		<tr>
 			<th>id</th>
 			<th>Nome</th>
@@ -63,12 +64,13 @@ if(session.getAttribute("nome").equals("Vitor")){
 			<td>${linha.id}</td>
 			<td>${linha.nome}</td>
 			<td>${linha.texto}</td>
-			<td bgcolor="#F5F5DC" align="center"><a href="campanhas_atualizar.jsp?id=${linha.id}">alterar</a>
+			<td align="center"><a href="campanhas_atualizar.jsp?id=${linha.id}">alterar</a>
 			</td>
 		</tr>
 		</c:forEach>
 	</table>
 </form> 
+</div>
 </div>
 
 </body>

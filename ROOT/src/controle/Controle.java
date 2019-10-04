@@ -185,8 +185,8 @@ public class Controle extends HttpServlet {
 		Dao d = new Dao();
 		EnviarEmail ee = new EnviarEmail();
 		
-		String email = "mais.vida.boaplena@gmail.com";
-		String senha = "bruno2013";
+		String email = "vitorrubm@gmail.com";
+		String senha = "Jesuseamor";
 		String assunto = "®";
 		String mensagem = null;	
 		

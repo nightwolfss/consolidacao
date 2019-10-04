@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="3.1">
 	<display-name>consolidar</display-name>
 	<welcome-file-list>
-		<welcome-file>campanhas_cadastro_de_email.jsp</welcome-file>
+		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
 
 	<context-param>

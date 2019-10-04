@@ -47,6 +47,23 @@ public class CampanhaDao extends Dao{
 		
 	}
 	
+	public void deletar(Integer id) {
+		abrirConexao();
+		
+		try {
+			
+			stmt = con.prepareStatement("delete from campanhas where id = ?");
+			stmt.setInt(1, id);
+			stmt.execute();
+			stmt.close();
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao deletar campanha: "+ e.getMessage());
+			e.printStackTrace();			
+		}
+		
+	}
+	
 	public List consultarCampanhas() {
 		List lista = new ArrayList();
 		

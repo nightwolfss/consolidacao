@@ -58,6 +58,10 @@ public class Controle extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		}
 		
+		if(var.equalsIgnoreCase("deletar")) {
+			deletarCampanha(request, response);
+		}
+		
 		if(var.equalsIgnoreCase("email")) {
 			enviarEmail(request, response);
 		}
@@ -175,6 +179,24 @@ public class Controle extends HttpServlet {
 			
 		} catch (Exception e) {
 			request.setAttribute("mensagem", "Erro ao gravar Campanha!!");
+			request.getRequestDispatcher("campanhas.jsp").forward(request, response);
+		}
+		
+	}
+	
+	protected void deletarCampanha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		CampanhaDao cd = new CampanhaDao();
+		Integer id = Integer.parseInt(request.getParameter("id"));
+				
+	
+		try {
+			cd.deletar(id);
+			
+			request.setAttribute("mensagem", "Campanha Excluída com Sucesso!!");
+			request.getRequestDispatcher("campanhas.jsp").forward(request, response);
+			
+		} catch (Exception e) {
+			request.setAttribute("mensagem", "Erro ao Excluir Campanha!!");
 			request.getRequestDispatcher("campanhas.jsp").forward(request, response);
 		}
 		

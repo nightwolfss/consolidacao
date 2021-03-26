@@ -1,4 +1,4 @@
-# consolidacao
+# Consolidacao
 Esse é um sistema de gerenciamentos da Consolidação do Ministério Apascentar de Nova Iguaçu;
 Nele são cadastrados os chamados "Consolidadores" que são responsáveis por acompanhar e ajudar cada Novo Convertido (pessoa que entra para Igreja).
 A dinamica do sistema consiste em: 
